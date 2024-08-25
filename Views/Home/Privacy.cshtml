@@ -1,0 +1,41 @@
+﻿@model PC1.Models.Operation
+
+@if (Model != null)
+{
+    <h2>Resultado de la Operación</h2>
+    <p>Nombre: @Model.Name</p>
+    <p>Correo: @Model.Email</p>
+    <p>Fecha de Operación: @Model.DateOfOperation.ToShortDateString()</p>
+
+    <h3>Instrumentos Seleccionados:</h3>
+    @if (Model.Instruments != null && Model.Instruments.Any())
+    {
+        <table>
+            <tr>
+                <th>Instrumento</th>
+                <th>IGV</th>
+                <th>Monto</th>
+            </tr>
+            @foreach (var instrument in Model.Instruments)
+            {
+                <tr>
+                    <td>@Model.Name</td>
+                    <td>@Model.IGV</td>
+                    <td>@Model.Amount</td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>No se seleccionaron instrumentos.</p>
+    }
+
+    <p>Comisión: @Model.Commission</p>
+    <p>Total a Pagar: @Model.TotalToPay</p>
+}
+else
+{
+    <p>No se pudo cargar el resultado de la operación.</p>
+}
+

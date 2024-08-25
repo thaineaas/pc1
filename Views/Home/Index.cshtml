@@ -1,0 +1,26 @@
+﻿
+@model List<PC1.Models.Instrument>
+<h2>Opere en Bolsa</h2>
+
+<form asp-action="Invest" method="post">
+    <label>Nombre y Apellido:</label>
+    <input type="text" name="name" required /><br />
+
+    <label>Correo electrónico:</label>
+    <input type="email" name="email" required /><br />
+
+    <label>Fecha de Operación:</label>
+    <input type="date" name="dateOfOperation" required /><br />
+
+    <label>Instrumentos:</label><br />
+    @foreach (var instrument in Model)
+    {
+        <input type="checkbox" name="selectedInstruments" value="@instrument.Id" /> @instrument.Name<br />
+    }
+
+    <label>Monto Abonar:</label>
+    <input type="number" name="amount" required /><br />
+
+    <input type="submit" value="Invertir" />
+</form>
+
